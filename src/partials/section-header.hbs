@@ -2,19 +2,28 @@
     {{#if name}}
     <h3 class="bold pull-left">
         {{#if website}}
-            <a href="{{website}}" target="_blank">
-                {{name}}
-                {{#if showWebsite }}
-                    <span class="sublink">∙ <a href="{{website}}" target="_blank" class="sublink">{{website}}</a></span>
-                {{/if}}
-                {{!-- <i class="fa fa-external-link" aria-hidden="true"></i> --}}
-            </a>
+          <div class="section-with-website">
+            <div class="section-name-and-skills">
+              {{name}}
+              {{#if keywords.length}}
+                <div class="flex-container">
+                  {{#each keywords}}
+                    <h6 class="skill">{{.}}</h6>
+                  {{/each}}
+                </div>
+              {{/if}}
+            </div>
+
+            {{#if showWebsite }}
+              <a href="{{website}}" target="_blank" class="sublink">{{website}}</a>
+            {{/if}}
+          </div>
         {{else}}
             {{name}}
         {{/if}}
     </h3>
     {{/if}}
-    <h5 class="italic pull-right">
+    <h5 class="pull-right">
         {{#if startDate}}
             <span class="startDate">{{formatDate startDate}}</span>
             {{#if endDate}}
