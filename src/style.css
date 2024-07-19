@@ -4,20 +4,6 @@
 /*----- Dimensions and sizes -----*/
 /* Base */
 @font-face {
-  font-family: 'Josefin Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Josefin Sans Light'), local('JosefinSans-Light'), url(https://fonts.gstatic.com/s/josefinsans/v14/Qw3FZQNVED7rKGKxtqIqX5Ecpl5te10k.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'Josefin Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Josefin Sans Bold'), local('JosefinSans-Bold'), url(https://fonts.gstatic.com/s/josefinsans/v14/Qw3FZQNVED7rKGKxtqIqX5Ectllte10k.ttf) format('truetype');
-}
-
-@font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 300;
@@ -67,9 +53,30 @@ body {
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-weight: 400;
   background: white;
-  margin: 50px 0 100px;
-  letter-spacing: .3px;
-  color: #39424B;
+  margin: 25px 0 25px;
+  letter-spacing: 0.3px;
+  color:black;
+}
+
+:root {
+  font-family: 'Noto Sans',  sans-serif;
+  font-size: medium;
+
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+  --syntax-tab-size: 2;
+  font-weight: 400;
+
+  /*colors*/
+  --pureooze-light-mode-primary: #f2f2f2;
+  --pureooze-primary: #26196f;
+  --pureooze-primary-for-rgba: 146, 50, 216;
+  --pureooze-primary-text: #000;
+  --pureooze-secondary-text: white;
+  --pureooze-accent: #9232D8FF;
+  --pureooze-accent-light: #ac73d8;
+  --pureooze-accent-light-mode: #f9f9f9;
+  --pureooze-detail: #aaa;
+  --pureooze-light-mode-detail: white;
 }
 
 h1,
@@ -83,33 +90,29 @@ h6 {
 }
 
 h1 {
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 40px;
   letter-spacing: 1px;
 }
 
 h2 {
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-size: 16px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 h3 {
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 14px;
   letter-spacing: .4px;
 }
 
-h3.bold {
-  font-weight: 700;
-}
-
 h4 {
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 12px;
 }
 
@@ -119,7 +122,7 @@ h4.bold {
 
 h5 {
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 11px;
 }
 
@@ -165,7 +168,7 @@ em {
 }
 
 ul {
-  margin: 10px 0 0;
+  margin: 0.3em 0 0;
   -webkit-padding-start: 25px;
 }
 
@@ -205,7 +208,7 @@ ul.two-column li {
 .keyline {
   width: 45px;
   margin: 8px 0 10px;
-  border-top: 1px solid #56817A;
+  border-top: 1px solid #26196f;
 }
 
 .pull-left {
@@ -214,6 +217,19 @@ ul.two-column li {
 
 .pull-right {
   float: right;
+}
+
+.section-with-website {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.section-name-and-skills {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5em;
 }
 
 .clearfix:after {
@@ -231,17 +247,24 @@ ul.two-column li {
   height: 52px;
   width: 52px;
   border-radius: 50%;
-  border: 2px solid #56817A;
+  border: 2px solid #26196f;
 }
 
 .summary {
   margin: 5px 0 5px;
+
+  padding: 0.5em 1em;
+  font-size: small;
+  background-color: rgba(var(--pureooze-primary-for-rgba), 0.1);
+}
+
+.work-highlight {
+  font-size: small;
 }
 
 .sublink {
-  font-size: 70%;
-  font-weight: 200;
-  color: dimgray;
+  color: var(--pureooze-primary);
+  font-size: smaller;
 }
 
 .capitalize {
@@ -251,13 +274,12 @@ ul.two-column li {
 /* Layouts */
 .page {
   background: white;
-  width: 612px;
+  width: 45em;
   min-height: 792px;
   display: block;
   margin: 0 auto;
-  border-top: 10px solid #56817A;
-  padding: 36px 22px 30px 34px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  border-top: 10px solid #26196f;
+  padding: 36px 22px 0 34px;
 }
 
 .page:after {
@@ -320,6 +342,7 @@ ul.two-column li {
 /* Components */
 .info-tag-container {
   margin-bottom: 5px;
+  display: flex;
 }
 
 .info-tag-container .fa {
@@ -385,8 +408,10 @@ ul.two-column li {
 }
 
 .skill {
-  margin: .15em;
-  padding: .15em;
-  background: ghostwhite;
-  border-radius: 5px;
+  padding: 0.05em 0.2em;
+  margin: 0.1em 0.2em;
+  background-color: rgba(var(--pureooze-primary-for-rgba), 0.1);
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--pureooze-primary);
 }
